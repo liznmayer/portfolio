@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Study: IA | Liz Mayer</title>
+<meta name="description" content="Case study: defining information architecture and taxonomy for Rapid7's unified platform.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,500i&amp;family=Karla:wght@400;500&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+
+  <a class="back-link" href="index.html">&larr; Home</a>
+
+  <header class="case-header">
+    <h1>From Products to Platform: <br> Building a Unified Security Experience through Taxonomy</h1>
+    <p class="meta">Rapid7 &middot; Information architecture, taxonomy &amp; data modeling &middot; Jan 2025&ndash;Sep 2026</p>
+<br>
+    <p class="meta">Read time: ~10min</p>
+    <p class="meta"><i>Rapid7's products were fragmented with inconsistent navigation and data models, limiting usability and platform value. 
+      After a v1 navigation structure failed usability testing, research into customers' mental models led to an object-oriented IA. 
+      This became the foundation for a new navigation and platform structure, replacing 100+ legacy pages with a unified experience. A staged rollout with an 
+      opt-in toggle drove adoption and validated the model, enabling continued consolidation across products and data.</i></p>
+ 
+  </header>
+
+  <section class="case-section">
+    <h2>The problem: products without platform</h2>
+    <p>Rapid7 had grown by acquisition. An MDR leader recognized across exposure, detection, and response, Rapid7's executive team 
+      excelled at identifying market-leading technologies and bringing them into the company's portfolio, enabling differentiated value 
+      across all domains of cybersecurity.</p>
+    <p>As of 2025, Rapid7 offered 8 core products, both sold individually and packaged together for specific use cases. While each product's 
+      capabilities were strong, they didn't integrate together. Every product had its own UI design, its own navigation, its own way of storing 
+      and representing data. There was no larger platform play that brought it all together to tell the story of a customer's security environment.</p>
+    <figure class="case-figure">
+      <img src="images/old-nav-composite.png" alt="Three screenshots of Rapid7's legacy product navigation layered together, showing the platform home, SIEM, and data collection sections each with their own distinct left-hand navigation.">
+      <figcaption>Examples of Rapid7's legacy navigation.</figcaption>
+    </figure>
+    <p>This fragmented experience also offered little incentive for customers to expand their portfolio. As customers adopted additional Rapid7 products, 
+      the operational burden of using them grew. Organizations with access to the full suite would need to navigate more than 100 unique pages 
+      to fully do their jobs.</p>
+    <p>There was an upside, though. Customers felt strongly that Rapid7 had all the data needed to fully understand their security posture—moreso than 
+      other vendors—but the platform failed to put it all together. Rapid7 was sitting on the insight but failing to deliver it, because the product was organized 
+      around legacy technology, rather than how security practitioners actually think and work.</p>
+    <p>Bringing Rapid7's products into a single, unified platform experience was the clear path forward. But the implications were far-reaching.</p>
+    <p>It would mean more than a redesign—we would need to completely rethink how the platform presented itself to customers. Rather than existing as a collection 
+      of individual products, the platform would need to become the experience itself, with products serving as the underlying engines that powered it.</p>
+
+  </section>
+ 
+  <section class="case-section">
+    <h2>But first, we got it wrong</h2>
+    <p>As Rapid7's content strategist and information architect, my role was to define the platform's navigation and taxonomy while coordinating research, 
+      prototyping, testing, documentation, and cross-functional strategy across Product and Engineering.</p>
+    <p>Our first navigation model was organized around the NIST Cybersecurity Framework, the most well-known standard in the industry. It made sense on paper—NIST CSF is an established mental model for security 
+      practitioners and offers a shared language. When we introduced the concept to customers in our Design Partner Program, the response was overwhelmingly positive. 
+      People recognized the framework and saw the clear step towards platform unification. The direction felt credible.</p>
+    <div class="csf-block">
+      <p class="csf-heading">NIST CSF Navigation</p>
+      <div class="csf-grid">
+        <div class="csf-item">
+          <svg class="csf-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21V9l9-6 9 6v12"/><path d="M9 21v-7h6v7"/></svg>
+          <span class="csf-label">Govern</span>
+          <span class="csf-desc">I want to bring business context to my security program, to align on objectives.</span>
+        </div>
+        <div class="csf-item">
+          <svg class="csf-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
+          <span class="csf-label">Identify</span>
+          <span class="csf-desc">I want visibility into what I need to protect and where I'm vulnerable.</span>
+        </div>
+        <div class="csf-item">
+          <svg class="csf-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="1.5"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+          <span class="csf-label">Protect</span>
+          <span class="csf-desc">I want to minimize weaknesses, so that they can't be exploited.</span>
+        </div>
+        <div class="csf-item">
+          <svg class="csf-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3.2"/><circle cx="12" cy="12" r="8.2"/></svg>
+          <span class="csf-label">Detect</span>
+          <span class="csf-desc">I want to know when preventative controls have been bypassed to find compromises.</span>
+        </div>
+        <div class="csf-item">
+          <svg class="csf-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3.5-7.1"/><path d="M21 3v5h-5"/></svg>
+          <span class="csf-label">Respond</span>
+          <span class="csf-desc">I want to take action on suspicious activity, and resolve compromised security posture.</span>
+        </div>
+        <div class="csf-item">
+          <svg class="csf-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l5-5.5 4 4L21 6"/><path d="M21 11V6h-5"/></svg>
+          <span class="csf-label">Recover</span>
+          <span class="csf-desc">I want to get back on track, to return to normal operations after a breach.</span>
+        </div>
+      </div>
+    </div>
+    <p>Then we ran findability testing, including tree tests and a card sort. While customers <i>said</i> they found the NIST CSF model understandable, their behavior told a 
+      different story.</p>
+    <p>People frequently sorted cards into spots that didn't match the CSF structure we'd designed. The more sessions we conducted and the more we listened to people 
+      think out loud, it became obvious that the lifecycle-based structure created too much overlap between categories. Even though the user sentiment was positive, in practice the NIST 
+      CSF didn't translate to a usable navigation system.</p>
+    <div class="stat-row">
+      <div class="stat">
+        <svg class="stat-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="7" height="9" rx="1"/><rect x="13" y="3" width="7" height="5" rx="1"/><rect x="13" y="10" width="7" height="11" rx="1"/><rect x="4" y="14" width="7" height="7" rx="1"/></svg>
+        <span class="stat-number">66</span>
+        <span class="stat-label">core security tasks card-sorted against the proposed model</span>
+      </div>
+      <div class="stat">
+        <svg class="stat-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 20v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="3.5"/><path d="M21 20v-2a4 4 0 0 0-3-3.87"/><path d="M15.5 3.6a3.5 3.5 0 0 1 0 6.8"/></svg>
+        <span class="stat-number">18</span>
+        <span class="stat-label">practitioners across security roles, weighted toward industry expertise</span>
+      </div>
+    </div>
+    <p>So, we were back to the drawing board, but not starting from zero. Although the NIST CSF navigation had failed, the research revealed something interesting. While 
+      participants disagreed on where content belonged within the NIST structure, the language they used to describe security work was remarkably consistent. Across 
+      roles, products, and organizations, common concepts and vocabulary surfaced repeatedly.</p>
+    <p>We had uncovered the foundation for a taxonomy that reflected how practitioners actually thought about their work.</p>
+
+  </section>
+
+  <section class="case-section">
+    <h2>Introducing object-oriented navigation</h2>
+    <p>What we landed on instead was an object-oriented navigation model. Rather than asking which framework should organize the platform, we asked a simpler question: 
+      what are the actual things that our customers think and talk about every day?</p>
+    <p>We already had a solid body of research from vetting the NIST CSF navigation, but answering that question required a bit more. I partnered with Rapid7's internal 
+      InfoSec and SOC teams, and spoke with our sales engineers and support staff who routinely saw customers struggle with the existing experience. With help of UX Research, we 
+      also conducted sessions with about 225 customers through interviews, contextual inquiries, card sorts, and findability testing.</p>
+    <p>Across all of those conversations, the thing I paid the closest attention to was language. Not whether people liked a concept, but the words they reached for instinctively. 
+      I tracked vocabulary: what customers called things when they weren't trying to be precise, what internal experts called those same concepts, where those mental models aligned, 
+      and where they diverged. I then compared those findings against the language used across the industry and by our competitors, both to validate our direction and to identify places 
+      where Rapid7 could establish a distinct point of view.</p>
+  </section>
+
+  <section class="case-section">
+    <h2>Shipping the nav without breaking trust</h2>
+    <p>The taxonomy led us to a new left-hand navigation with 12 primary items. To start, the 100+ pages customers previously had to navigate were 
+      organized within them, with future plans to consolidate these pages into single-click experiences. We shipped the first version of the nav in May 2025, 
+      while data and experience unification work continued to roll out product by product.</p>
+    <figure class="case-figure is-wide is-dark">
+      <img src="images/new-nav-plat-home.png" alt="The unified Rapid7 Command Platform home screen, showing the new object-oriented left navigation with sections like Command Home, Reports & Dashboards, and Response & Remediation.">
+      <figcaption>The new unified platform home, built on the object-oriented navigation model.</figcaption>
+    </figure>
+      <p>No matter how much research supported the new nav, we knew there would still be friction as users began to learn it. To manage that risk, we introduced 
+        something new for Rapid7: an opt-in toggle that allowed individual users to freely switch between the old and new navigation. I partnered closely with our CPO, 
+        VP of Product Management, and Director of UX to define the rollout strategy and make the case for the toggle as the safest way to transition 11,000+ customers 
+        without forcing them to relearn core workflows overnight.</p>
+      <p>Within six months, ~65% of users had chosen to retain the new navigation. That signal 
+          mattered: adoption wasn't driven by coercion, but by preference. Users were opting into something unfamiliar over something familiar, which validated not 
+          just the usability of the system, but the underlying model itself.</p>
+          <p>From there, we focused on what was still driving people back to the old experience. Throughout 2026, we addressed those gaps 
+            directly—moving to a micro-frontend architecture to reduce page load times, and adding in-navigation search to improve wayfinding and recovery when users did get lost.</p>
+  </section>
+
+  <section class="case-section">
+    <h2>Taxonomy as platform infrastructure</h2>
+    <p>Rapid7 had never operated from a shared data model before. Internally, 
+      there was little common language for thinking in terms of supertypes, subtypes, attributes, and relationships. At the same time, each product stored and structured data 
+      differently, which meant the taxonomy couldn't simply be diagrammed and handed off. It required both a translation layer that didn't exist yet and an organization capable 
+      of working in a new mental model.</p>
+    <p>In addition to defining the new navigation, my role was also to enable the org to convert our research-backed taxonomy into the platform's data infrastructure.</p>
+    <p>I started by writing Rapid7's first taxonomy document: a non-technical data model that defined every object, attribute, and relationship in plain language. 
+      I authored the definitions, informing the content with engineering and product input. That document became the spec engineering used to implement the technical 
+      translation schemas.</p>
+    <figure class="case-figure is-wide sheet-wrapper">
+      <div class="sheet-toolbar">
+        <span class="sheet-tab is-active">Objects</span>
+        <span class="sheet-tab">Relationships</span>
+        <span class="sheet-tab">Attributes</span>
+        <span class="sheet-tab">Enum Lists</span>
+      </div>
+      <img src="images/r7-taxonomy-doc.png" alt="Excerpt from Rapid7's taxonomy document, showing object supertypes, subtypes, and plain-language definitions for objects like Control, Data connector, Finding, and Intelligence.">
+      <figcaption>An excerpt from the taxonomy document.</figcaption>
+    </figure>
+    <p>From there, I stayed involved in the implementation—reviewing schemas in Git for fidelity to the taxonomy and resolving edge cases where terminology or structure 
+      was contested. When disagreements required escalation, I led alignment conversations with product leadership, including our CPO.</p>
+    <p>To make the implementation real, I worked with a small group of engineers from across product teams—people whose primary work was elsewhere, but who had strong 
+      instincts for data modeling and a stake in getting unification right. Some had prior modeling experience, others were simply strong problem solvers with systems thinking 
+      skills. I facilitated a lightweight biweekly working session for us to unwind the hardest legacy data structures product by product.</p>
+  </section>
+
+  <section class="case-section">
+    <h2>Looking ahead: the road to unification</h2>
+    <p>The new navigation and taxonomy-based data infrastructure formed the foundation for transforming Rapid7's 100+ legacy pages into unified, single-click experiences.</p>
+    <p>As of today, three of these consolidated experiences are live, with additional work in active development. The new navigation is already available to all Rapid7 customers, 
+      and the legacy navigation—including the opt-out option—is scheduled to fully sunset later this year.</p>
+    <p>While additional work remains to fully unify both data and user 
+        experiences, early signals are strong. Customers have responded positively to what's been delivered so far, and we're seeing measurable reductions in task time and click 
+        depth across the platform.</p>
+    <p>More importantly, the unified model is helping customers. Security practitioners who use Rapid7 can now better understand their security posture, detect risky behavior 
+      earlier, and identify remediation opportunities that matter before attackers have the chance to exploit them.</p>
+  </section>
+
+    <footer class="site-footer">
+    <p>&copy; 2026 Liz Mayer. All rights reserved.</p>
+  </footer>
+
+</div>
+</body>
+</html>
