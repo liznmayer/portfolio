@@ -347,6 +347,16 @@ a:focus-visible {
   }
 }
 
+.csf-grid--3col {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+ 
+@media (max-width: 600px) {
+  .csf-grid--3col {
+    grid-template-columns: 1fr;
+  }
+}
+
 .stat-row {
   display: flex;
   gap: 2.5rem;
